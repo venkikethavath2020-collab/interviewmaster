@@ -7,6 +7,12 @@ export default defineConfig({
   plugins: [vue(), tailwindcss()],
   build: {
     rollupOptions: {
+      // Silence harmless "#__PURE__ comment ignored" annotation warnings emitted by
+      // prebuilt third-party deps (e.g. @vueuse/core); they're cosmetic and not from our code.
+      onwarn(warning, defaultHandler) {
+        if (warning.code === 'INVALID_ANNOTATION' && /node_modules/.test(warning.message)) return
+        defaultHandler(warning)
+      },
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) return 'vendor'
