@@ -17,6 +17,23 @@ export const jsCategories: ConceptCategory[] = [
   { slug: 'design-patterns', title: 'Design Patterns in JS', description: 'Module, factory, singleton, observer/emitter and strategy — the JS way.', order: 14 },
 ]
 
+export const vueCategories: ConceptCategory[] = [
+  { slug: 'fundamentals', title: 'Fundamentals & Mental Model', description: 'What Vue is, the app instance, declarative rendering, and Options vs Composition API.', order: 1 },
+  { slug: 'reactivity', title: 'Reactivity System', description: 'The heart of Vue: ref/reactive, Proxy tracking, computed, and watchers.', order: 2 },
+  { slug: 'templates', title: 'Templates & Directives', description: 'Template syntax, bindings, conditionals, lists, events, v-model and custom directives.', order: 3 },
+  { slug: 'components', title: 'Components', description: 'Props down, events up, slots, provide/inject and dynamic/async components.', order: 4 },
+  { slug: 'composition-api', title: 'Composition API', description: 'setup, <script setup>, composables and logic reuse — the modern idiom.', order: 5 },
+  { slug: 'lifecycle-rendering', title: 'Lifecycle & Rendering', description: 'Lifecycle hooks, the virtual DOM, render functions, nextTick and the reactivity-to-render link.', order: 6 },
+  { slug: 'built-in', title: 'Built-in Components', description: 'KeepAlive, Teleport, Suspense, Transition and special attributes.', order: 7 },
+  { slug: 'routing', title: 'Routing (Vue Router)', description: 'Routes, params, nesting, navigation guards and lazy-loaded views.', order: 8 },
+  { slug: 'state', title: 'State Management', description: 'Local state, provide/inject, shared composables and Pinia.', order: 9 },
+  { slug: 'performance', title: 'Performance', description: 'Lazy loading, computed caching, v-memo, list and reactivity performance.', order: 10 },
+  { slug: 'forms-async', title: 'Forms, Async & Data', description: 'Form handling, data fetching patterns, error handling and SSR/hydration.', order: 11 },
+  { slug: 'testing', title: 'Testing', description: 'Unit, component and e2e testing plus testing composables.', order: 12 },
+  { slug: 'patterns', title: 'Patterns & Architecture', description: 'Component design, headless/compound components and project structure.', order: 13 },
+  { slug: 'ecosystem', title: 'Ecosystem & Tooling', description: 'Vite, DevTools, TypeScript, Nuxt and component styling.', order: 14 },
+]
+
 const maps: Record<string, () => Promise<ConceptMap>> = {
   javascript: async () => {
     const [a, b, c, d] = await Promise.all([
@@ -28,6 +45,19 @@ const maps: Record<string, () => Promise<ConceptMap>> = {
     return {
       techId: 'javascript',
       categories: jsCategories,
+      concepts: [...a.concepts, ...b.concepts, ...c.concepts, ...d.concepts],
+    }
+  },
+  vue: async () => {
+    const [a, b, c, d] = await Promise.all([
+      import('./vue-concepts-foundations'),
+      import('./vue-concepts-components'),
+      import('./vue-concepts-rendering-routing'),
+      import('./vue-concepts-advanced'),
+    ])
+    return {
+      techId: 'vue',
+      categories: vueCategories,
       concepts: [...a.concepts, ...b.concepts, ...c.concepts, ...d.concepts],
     }
   },

@@ -23,6 +23,9 @@ export default defineConfig({
           if (id.includes('/src/data/knowledge/js-concepts-')) {
             return 'knowledge-javascript'
           }
+          if (id.includes('/src/data/knowledge/vue-concepts-')) {
+            return 'knowledge-vue'
+          }
         },
       },
     },
