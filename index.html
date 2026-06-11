@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InterviewMaster — Frontend & Backend Interview Preparation</title>
+    <meta
+      name="description"
+      content="Deep technical knowledge base for experienced developers: JavaScript, TypeScript, Vue, React, Node, PostgreSQL, AWS, security and system design. Internals, mental models, cheat sheets, revision modes and company-specific question banks."
+    />
+    <meta name="keywords" content="interview preparation, javascript interview, vue interview, react interview, node interview, postgresql interview, system design, frontend interview, backend interview" />
+    <meta property="og:title" content="InterviewMaster — Revise an entire technology in 15 minutes" />
+    <meta property="og:description" content="Internals, mental models, cheat sheets, mock interviews and last-30-minutes revision for senior frontend and full-stack interviews." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0b0f17" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "InterviewMaster",
+        "applicationCategory": "EducationalApplication",
+        "description": "Interview preparation platform for frontend and backend developers covering JavaScript, TypeScript, Vue, React, Node.js, PostgreSQL, AWS, testing, security and system design.",
+        "operatingSystem": "Web"
+      }
+    </script>
+    <script>
+      // Apply persisted theme before first paint to avoid a light-mode flash
+      try {
+        var t = localStorage.getItem('im-theme')
+        if (t === 'dark' || (t !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark')
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
